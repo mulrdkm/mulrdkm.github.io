@@ -73,7 +73,7 @@ matches.push(match[index]);
 return matches;
 }
 $(document).ready(function(e) {
-var myUrl = 'https://www.youtube.com/playlist?list=PLxXTdjyXA1UesEZGwjh02OPWFBkrvoiB3';
+var myUrl = 'https://www.youtube.com/';
 var x = new XMLHttpRequest();
 x.open('GET', 'https://cors-anywhere.herokuapp.com/'+myUrl);
 x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
@@ -163,7 +163,7 @@ matches.push(match[index]);
 return matches;
 }
 $(document).ready(function(e) {
-var myUrl = 'https://github.com/sabrisangjaya?tab=repositories';
+var myUrl = 'https://github.com/mulrdkm?tab=repositories';
 var xgit = new XMLHttpRequest();
 xgit.open('GET', 'https://cors-anywhere.herokuapp.com/'+myUrl);
 xgit.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
@@ -225,7 +225,7 @@ xgit.send();
 $('#print-btn').click(() => {
 var pdf = new jsPDF('p','mm', [297, 210]);
 pdf.addHTML(document.body,function() {
-pdf.save('cv-sabrisangjaya.pdf');
+pdf.save('cv-muliansyah.pdf');
 });
 })
 function convertImgToBase64(url, callback, outputFormat){
