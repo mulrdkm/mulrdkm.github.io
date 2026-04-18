@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MULRDKM — Portfolio | Muliansyah Rasdakim</title>
+  <meta name="description" content="Portfolio Muliansyah Rasdakim — Video Editor, Desain Grafis, dan Photography. Kreator visual di Diskominfo Bengkayang. Open for freelance & collaboration." />
+  <meta name="keywords" content="Muliansyah Rasdakim, MULRDKM, video editor, desain grafis, photography, portfolio, Bengkayang, konten kreator, freelance" />
+  <meta name="author" content="Muliansyah Rasdakim" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
+  <meta name="theme-color" content="#080a12" />
+  <link rel="canonical" href="https://mulrdkm.github.io/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mulrdkm.github.io/" />
+  <meta property="og:title" content="MULRDKM — Portfolio | Muliansyah Rasdakim" />
+  <meta property="og:description" content="Video Editor · Desain Grafis · Photography. Kreator visual berbasis di Bengkayang, Kalimantan Barat. Open for freelance & collaboration." />
+  <meta property="og:image" content="https://mulrdkm.github.io/mulrdkm.jpg" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="600" />
+  <meta property="og:locale" content="id_ID" />
+  <meta property="og:site_name" content="MULRDKM Portfolio" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mulrdkm.github.io/" />
+  <meta name="twitter:title" content="MULRDKM — Portfolio | Muliansyah Rasdakim" />
+  <meta name="twitter:description" content="Video Editor · Desain Grafis · Photography. Kreator visual berbasis di Bengkayang, Kalimantan Barat." />
+  <meta name="twitter:image" content="https://mulrdkm.github.io/mulrdkm.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23080a12'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='11' font-weight='bold' fill='%2300fff0'>MR</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080a12;
+      --fg: #e8edf5;
+      --cyan: #00fff0;
+      --magenta: #c855f7;
+      --fg-60: rgba(232,237,245,0.6);
+      --fg-50: rgba(232,237,245,0.5);
+      --fg-40: rgba(232,237,245,0.4);
+      --fg-30: rgba(232,237,245,0.3);
+      --fg-20: rgba(232,237,245,0.2);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* noise overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      z-index: 9999;
+    }
+
+    /* ── UTILS ── */
+    .font-mono { font-family: 'Space Mono', monospace; }
+    .text-cyan  { color: var(--cyan); }
+    .text-magenta { color: var(--magenta); }
+    .glow-cyan  { text-shadow: 0 0 20px rgba(0,255,240,0.6), 0 0 40px rgba(0,255,240,0.3); }
+    .glow-magenta { text-shadow: 0 0 20px rgba(200,85,247,0.6), 0 0 40px rgba(200,85,247,0.3); }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.28s; }
+    .reveal-delay-3 { transition-delay: 0.4s; }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      transition: background 0.5s, backdrop-filter 0.5s, border-bottom 0.5s;
+    }
+    #navbar.scrolled {
+      background: rgba(8,10,18,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,255,240,0.08);
+    }
+    .nav-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--cyan);
+      text-shadow: 0 0 20px rgba(0,255,240,0.6), 0 0 40px rgba(0,255,240,0.3);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg-60);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--fg-60);
+      padding: 4px;
+    }
+    .nav-hamburger svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem 1.5rem 1.25rem;
+      background: rgba(8,10,18,0.97);
+      border-top: 1px solid rgba(0,255,240,0.1);
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg-60);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-mobile a:hover { color: var(--cyan); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+    }
+
+    /* ── HERO ── */
+    #home {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    /* scanlines */
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+      pointer-events: none;
+      z-index: 1;
+    }
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,255,240,0.04) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(200,85,247,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 1.5rem;
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+    .hero-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: rgba(0,255,240,0.6);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero-h1 {
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s forwards;
+    }
+    .hero-sub {
+      color: var(--fg-50);
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      max-width: 32rem;
+      margin: 0 auto 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.7s forwards;
+    }
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.9s forwards;
+    }
+    .btn-primary {
+      padding: 0.75rem 2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      border-radius: 0.375rem;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #00fff0, #00c8c0);
+      color: #080a12;
+      box-shadow: 0 0 30px rgba(0,255,240,0.4);
+      transition: transform 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+    }
+    .btn-primary:hover { transform: scale(1.05); }
+    .btn-outline {
+      padding: 0.75rem 2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 0.375rem;
+      border: 1px solid rgba(0,255,240,0.3);
+      cursor: pointer;
+      background: transparent;
+      color: var(--fg-60);
+      transition: transform 0.3s, color 0.3s, border-color 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-outline:hover { transform: scale(1.05); color: var(--cyan); border-color: rgba(0,255,240,0.5); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: 6rem 1.5rem;
+    }
+    .about-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(0,255,240,0.5);
+      margin-bottom: 3rem;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 3rem 4rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    .about-photo-wrap { position: relative; width: 100%; }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 1rem;
+      display: block;
+      box-shadow: 0 0 0 1px rgba(0,255,240,0.2), 0 0 32px rgba(0,255,240,0.1), 0 0 64px rgba(200,85,247,0.06);
+    }
+    .about-photo-overlay {
+      position: absolute;
+      inset: 0;
+      border-radius: 1rem;
+      background: linear-gradient(to bottom, transparent 55%, rgba(8,10,18,0.55));
+      pointer-events: none;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--cyan);
+      text-shadow: 0 0 20px rgba(0,255,240,0.6), 0 0 40px rgba(0,255,240,0.3);
+    }
+    .stat-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg-30);
+      margin-top: 4px;
+    }
+    .about-right { display: flex; flex-direction: column; gap: 2rem; }
+    .about-h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .about-bio-lg {
+      color: var(--fg-60);
+      line-height: 1.8;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+    .about-bio-sm {
+      color: rgba(232,237,245,0.45);
+      line-height: 1.8;
+      font-size: 0.875rem;
+    }
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tool-chip {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.25rem;
+      border: 1px solid rgba(0,255,240,0.18);
+      color: var(--cyan);
+      background: rgba(0,255,240,0.04);
+      letter-spacing: 0.15em;
+    }
+
+    /* ── WORK ── */
+    #work {
+      padding: 6rem 1.5rem;
+    }
+    .work-inner { max-width: 48rem; margin: 0 auto; }
+    .work-header { text-align: center; margin-bottom: 5rem; }
+    .work-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(200,85,247,0.5);
+      margin-bottom: 0.75rem;
+    }
+    .work-h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; }
+    .work-sub { color: var(--fg-40); margin-top: 1rem; max-width: 28rem; margin-left: auto; margin-right: auto; font-size: 0.95rem; }
+    .work-sections { display: flex; flex-direction: column; gap: 6rem; }
+
+    /* Carousel */
+    .carousel-wrap { width: 100%; }
+    .carousel-title-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .carousel-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      opacity: 0.3;
+    }
+    .carousel-line { flex: 1; height: 1px; opacity: 0.15; }
+    .carousel-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .carousel-box {
+      border-radius: 1rem;
+      padding: 12px;
+      position: relative;
+    }
+    .carousel-track { overflow: hidden; border-radius: 0.75rem; }
+    .carousel-slide {
+      display: none;
+      width: 100%;
+      justify-content: center;
+    }
+    .carousel-slide.active { display: flex; }
+    .embed-wrap {
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: #fff;
+      position: relative;
+      min-height: 480px;
+    }
+    .embed-skeleton {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: rgba(8,10,18,0.95);
+      border-radius: 0.75rem;
+      z-index: 5;
+      transition: opacity 0.4s;
+    }
+    .embed-skeleton.hidden { opacity: 0; pointer-events: none; }
+    .spinner {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: var(--cyan);
+      border-right-color: rgba(200,85,247,0.5);
+      animation: spin 1s linear infinite;
+    }
+    .skeleton-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: rgba(0,255,240,0.4);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .embed-content { opacity: 0; transition: opacity 0.4s; width: 100%; }
+    .embed-content.loaded { opacity: 1; }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0.5rem;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s;
+      z-index: 10;
+    }
+    .carousel-btn:hover { transform: translateY(-50%) scale(1.1); }
+    .carousel-btn.prev { left: 0.75rem; }
+    .carousel-btn.next { right: 0.75rem; }
+    .carousel-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: block; }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 0.75rem;
+    }
+    .carousel-dot {
+      height: 6px;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+      transition: width 0.3s, background 0.3s, box-shadow 0.3s;
+    }
+    .carousel-status {
+      text-align: center;
+      margin-top: 4px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      opacity: 0.3;
+    }
+
+    /* ── CONTACT ── */
+    #contact { padding: 6rem 1.5rem; }
+    .contact-inner { max-width: 48rem; margin: 0 auto; text-align: center; }
+    .contact-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(0,255,240,0.5);
+      margin-bottom: 0.75rem;
+    }
+    .contact-h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 1.5rem; }
+    .contact-sub { color: var(--fg-50); font-size: 1.1rem; line-height: 1.7; max-width: 28rem; margin: 0 auto 3rem; }
+    .contact-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 4rem; }
+    .available-box {
+      border: 1px solid rgba(0,255,240,0.1);
+      background: rgba(0,255,240,0.02);
+      border-radius: 0.5rem;
+      padding: 2rem;
+    }
+    .available-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg-30);
+      margin-bottom: 0.75rem;
+    }
+    .available-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+    .available-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      border: 1px solid rgba(200,85,247,0.2);
+      color: var(--fg-50);
+      background: rgba(200,85,247,0.04);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 1.5rem;
+      border-top: 1px solid rgba(0,255,240,0.08);
+    }
+    .footer-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .footer-inner span {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--fg-20);
+    }
+    .footer-inner span:first-child { color: var(--fg-30); }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#home">MULRDKM</a>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <svg id="icon-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg id="icon-close" viewBox="0 0 24 24" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="home">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <p class="hero-label font-mono">Portofolio</p>
+    <h1 class="hero-h1">
+      Hi! <span class="text-magenta glow-magenta">I'm</span> <span class="text-cyan glow-cyan">Mul</span>
+    </h1>
+    <p class="hero-sub">Video Editor · Desain Grafis · Photography</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#work">View Work</a>
+      <a class="btn-outline" href="#contact">Contact Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="about-inner">
+    <p class="section-label font-mono reveal">About</p>
+    <div class="about-grid">
+      <div class="reveal reveal-delay-1">
+        <div class="about-photo-wrap">
+          <img src="./mulrdkm.jpg" alt="Muliansyah Rasdakim" class="about-photo" />
+          <div class="about-photo-overlay"></div>
+        </div>
+        <div class="about-stats">
+          <div class="stat-item"><div class="stat-num">2+</div><div class="stat-label font-mono">Years</div></div>
+          <div class="stat-item"><div class="stat-num">DKV</div><div class="stat-label font-mono">Teacher</div></div>
+          <div class="stat-item"><div class="stat-num">Gov</div><div class="stat-label font-mono">Content</div></div>
+        </div>
+      </div>
+      <div class="about-right reveal reveal-delay-2">
+        <div>
+          <h2 class="about-h2">Muliansyah <br/><span class="text-cyan glow-cyan">Rasdakim</span></h2>
+          <p class="about-bio-lg">
+            A visual creator currently working at <span class="text-cyan">Diskominfo Bengkayang</span> —
+            producing content, graphic design, and visual communication for public service since June 2025.
+          </p>
+          <p class="about-bio-sm">
+            Previously served as a <span class="text-magenta">temporary DKV teacher at SMKN 1 Semparuk</span>
+            from June 2023 to June 2025 — teaching Design & Visual Communication to the next generation of creatives.
+            From the classroom to the studio, the same passion for visual storytelling drives everything I do.
+          </p>
+        </div>
+        <div class="tools">
+          <span class="tool-chip">Premiere Pro</span>
+          <span class="tool-chip">Lightroom</span>
+          <span class="tool-chip">Photoshop</span>
+          <span class="tool-chip">After Effects</span>
+          <span class="tool-chip">Illustrator</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WORK ── -->
+<section id="work">
+  <div class="work-inner">
+    <div class="work-header reveal">
+      <p class="work-label font-mono">Portfolio</p>
+      <h2 class="work-h2">Current <span class="text-magenta glow-magenta">Work</span></h2>
+      <p class="work-sub">Browse through work organized by craft. Use the arrows to explore each piece.</p>
+    </div>
+
+    <div class="work-sections">
+
+      <!-- Video Editor -->
+      <div class="carousel-wrap reveal" data-carousel="video" data-accent="cyan">
+        <p class="text-center" style="color:var(--fg-40);font-size:0.875rem;margin-bottom:1.5rem;">Cinematic storytelling through dynamic cuts, motion, and rhythm.</p>
+        <div class="carousel-title-row">
+          <span class="carousel-num font-mono" style="color:var(--cyan)">01</span>
+          <div class="carousel-line" style="background:var(--cyan)"></div>
+          <span class="carousel-title text-cyan" style="text-shadow:0 0 20px rgba(0,255,240,0.5)">Video Editor</span>
+          <div class="carousel-line" style="background:var(--cyan)"></div>
+        </div>
+        <div class="carousel-box" style="background:rgba(0,255,240,0.06);border:1px solid rgba(0,255,240,0.15)">
+          <div class="carousel-track">
+            <div class="carousel-slide active"><div class="embed-wrap" data-url="https://www.instagram.com/reel/C0Eh8AIp1rB/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/reel/CzzzDUPJHyG/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/reel/C05hJX_JG5u/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/reel/C5Fmn21JULG/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/reel/C5PYxreSTyz/"></div></div>
+          </div>
+          <button class="carousel-btn prev" style="background:rgba(0,255,240,0.13);border:1px solid rgba(0,255,240,0.2);color:var(--cyan)" aria-label="Prev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <button class="carousel-btn next" style="background:rgba(0,255,240,0.13);border:1px solid rgba(0,255,240,0.2);color:var(--cyan)" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+          <div class="carousel-dots"></div>
+          <p class="carousel-status font-mono" style="color:var(--cyan)"></p>
+        </div>
+      </div>
+
+      <!-- Desain Grafis -->
+      <div class="carousel-wrap reveal" data-carousel="desain" data-accent="magenta">
+        <p class="text-center" style="color:var(--fg-40);font-size:0.875rem;margin-bottom:1.5rem;">Bold visual compositions that communicate with clarity and impact.</p>
+        <div class="carousel-title-row">
+          <span class="carousel-num font-mono" style="color:var(--magenta)">02</span>
+          <div class="carousel-line" style="background:var(--magenta)"></div>
+          <span class="carousel-title text-magenta" style="text-shadow:0 0 20px rgba(200,85,247,0.5)">Desain Grafis</span>
+          <div class="carousel-line" style="background:var(--magenta)"></div>
+        </div>
+        <div class="carousel-box" style="background:rgba(200,85,247,0.06);border:1px solid rgba(200,85,247,0.15)">
+          <div class="carousel-track">
+            <div class="carousel-slide active"><div class="embed-wrap" data-url="https://www.instagram.com/p/Cy9x6DUpcJW/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/p/C7D3uR2vbWA/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/p/C7_5AwvyIVD/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/p/C9O6YZfpujW/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/p/C-0ERQaSTq3/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/p/DA5mndfSRzu/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/p/DB0H1SiPACS/"></div></div>
+          </div>
+          <button class="carousel-btn prev" style="background:rgba(200,85,247,0.13);border:1px solid rgba(200,85,247,0.2);color:var(--magenta)" aria-label="Prev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <button class="carousel-btn next" style="background:rgba(200,85,247,0.13);border:1px solid rgba(200,85,247,0.2);color:var(--magenta)" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+          <div class="carousel-dots"></div>
+          <p class="carousel-status font-mono" style="color:var(--magenta)"></p>
+        </div>
+      </div>
+
+      <!-- Photography -->
+      <div class="carousel-wrap reveal" data-carousel="photo" data-accent="cyan">
+        <p class="text-center" style="color:var(--fg-40);font-size:0.875rem;margin-bottom:1.5rem;">Capturing authentic moments with a cinematic eye.</p>
+        <div class="carousel-title-row">
+          <span class="carousel-num font-mono" style="color:var(--cyan)">03</span>
+          <div class="carousel-line" style="background:var(--cyan)"></div>
+          <span class="carousel-title text-cyan" style="text-shadow:0 0 20px rgba(0,255,240,0.5)">Photography</span>
+          <div class="carousel-line" style="background:var(--cyan)"></div>
+        </div>
+        <div class="carousel-box" style="background:rgba(0,255,240,0.06);border:1px solid rgba(0,255,240,0.15)">
+          <div class="carousel-track">
+            <div class="carousel-slide active"><div class="embed-wrap" data-url="https://www.instagram.com/reel/C8OkimOJoZj/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/reel/C82BMWmSHDV/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/reel/C9O1EK3Jo29/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/reel/C9SN1vJRlta/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/reel/C9UaSwbyDN0/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/reel/DA8YnnxSjaP/"></div></div>
+            <div class="carousel-slide"><div class="embed-wrap" data-url="https://www.instagram.com/reel/DBAjJZtyRQK/"></div></div>
+          </div>
+          <button class="carousel-btn prev" style="background:rgba(0,255,240,0.13);border:1px solid rgba(0,255,240,0.2);color:var(--cyan)" aria-label="Prev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <button class="carousel-btn next" style="background:rgba(0,255,240,0.13);border:1px solid rgba(0,255,240,0.2);color:var(--cyan)" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+          <div class="carousel-dots"></div>
+          <p class="carousel-status font-mono" style="color:var(--cyan)"></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <p class="contact-label font-mono">Get In Touch</p>
+    <h2 class="contact-h2">Let's create something <br/><span class="text-cyan glow-cyan">together</span></h2>
+    <p class="contact-sub">Open for freelance projects, collaborations, and creative partnerships. Let's talk.</p>
+    <div class="contact-btns">
+      <a class="btn-primary" href="https://wa.me/6281391654482?text=Halo%2C%20saya%20tertarik%20untuk%20bekerja%20sama%21" target="_blank" rel="noopener noreferrer">
+        Contact Me
+      </a>
+      <a class="btn-outline" href="https://www.instagram.com/muliansh_/" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Instagram
+      </a>
+    </div>
+    <div class="available-box">
+      <p class="available-label font-mono">Available for</p>
+      <div class="available-tags">
+        <span class="available-tag">Freelance Projects</span>
+        <span class="available-tag">Brand Videos</span>
+        <span class="available-tag">Photography Sessions</span>
+        <span class="available-tag">Graphic Design</span>
+        <span class="available-tag">Collaborations</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <span>MULRDKM</span>
+    <span id="footer-year"></span>
+    <span>Video · Design · Photography</span>
+  </div>
+</footer>
+
+<script>
+  // ── FOOTER YEAR ──
+  document.getElementById('footer-year').textContent = '© ' + new Date().getFullYear() + ' · All rights reserved';
+
+  // ── NAVBAR ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('nav-mobile');
+  const iconMenu  = document.getElementById('icon-menu');
+  const iconClose = document.getElementById('icon-close');
+  hamburger.addEventListener('click', () => {
+    const open = navMobile.classList.toggle('open');
+    iconMenu.style.display  = open ? 'none'  : 'block';
+    iconClose.style.display = open ? 'block' : 'none';
+  });
+  navMobile.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navMobile.classList.remove('open');
+      iconMenu.style.display  = 'block';
+      iconClose.style.display = 'none';
+    });
+  });
+
+  // ── PARTICLE CANVAS ──
+  (function() {
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    let animId, particles = [];
+
+    function resize() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+
+    function init() {
+      particles = Array.from({ length: 60 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        size: Math.random() * 2 + 0.5,
+        color: Math.random() > 0.5 ? '#00fff0' : '#c855f7',
+        alpha: Math.random() * 0.6 + 0.1,
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.fillStyle   = p.color;
+        ctx.shadowBlur  = 8;
+        ctx.shadowColor = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx   = particles[i].x - particles[j].x;
+          const dy   = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          if (dist < 100) {
+            ctx.save();
+            ctx.globalAlpha = (1 - dist/100) * 0.15;
+            ctx.strokeStyle = particles[i].color;
+            ctx.lineWidth   = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+            ctx.restore();
+          }
+        }
+      }
+      animId = requestAnimationFrame(draw);
+    }
+
+    init(); draw();
+    window.addEventListener('resize', resize);
+  })();
+
+  // ── SCROLL REVEAL ──
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  // ── INSTAGRAM EMBEDS ──
+  function loadInstagramScript() {
+    return new Promise(resolve => {
+      const id = 'instagram-embed-script';
+      if (document.getElementById(id)) {
+        if (window.instgrm) resolve(); else setTimeout(resolve, 500);
+        return;
+      }
+      const s = document.createElement('script');
+      s.id = id;
+      s.src = 'https://www.instagram.com/embed.js';
+      s.async = true;
+      s.onload = resolve;
+      document.body.appendChild(s);
+    });
+  }
+
+  function buildEmbed(wrap, url) {
+    if (wrap.dataset.loaded) return;
+    wrap.dataset.loaded = '1';
+
+    const skeleton = document.createElement('div');
+    skeleton.className = 'embed-skeleton';
+    skeleton.innerHTML = '<div class="spinner"></div><span class="skeleton-label font-mono">loading...</span>';
+
+    const content = document.createElement('div');
+    content.className = 'embed-content';
+    content.innerHTML = `<blockquote class="instagram-media"
+      data-instgrm-permalink="${url}?utm_source=ig_embed&utm_campaign=loading"
+      data-instgrm-version="14"
+      style="background:transparent;border:0;border-radius:3px;margin:0;max-width:100%;min-width:280px;padding:0;width:100%;"></blockquote>`;
+
+    wrap.appendChild(skeleton);
+    wrap.appendChild(content);
+
+    loadInstagramScript().then(() => {
+      if (window.instgrm) window.instgrm.Embeds.process();
+    });
+
+    const obs = new MutationObserver(() => {
+      const iframe = wrap.querySelector('iframe');
+      if (iframe) {
+        obs.disconnect();
+        const reveal = () => { skeleton.classList.add('hidden'); content.classList.add('loaded'); };
+        iframe.addEventListener('load', reveal, { once: true });
+        setTimeout(reveal, 4000);
+      }
+    });
+    obs.observe(content, { childList: true, subtree: true });
+  }
+
+  // ── CAROUSELS ──
+  document.querySelectorAll('.carousel-wrap').forEach(wrap => {
+    const slides    = Array.from(wrap.querySelectorAll('.carousel-slide'));
+    const dotsEl    = wrap.querySelector('.carousel-dots');
+    const statusEl  = wrap.querySelector('.carousel-status');
+    const prevBtn   = wrap.querySelector('.carousel-btn.prev');
+    const nextBtn   = wrap.querySelector('.carousel-btn.next');
+    const accent    = wrap.dataset.accent;
+    const color     = accent === 'cyan' ? '#00fff0' : '#c855f7';
+    const colorFade = accent === 'cyan' ? 'rgba(0,255,240,0.25)' : 'rgba(200,85,247,0.25)';
+    let current     = 0;
+    let paused      = false;
+    let timer;
+
+    // Build dots
+    slides.forEach((_, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'carousel-dot';
+      btn.setAttribute('aria-label', 'Slide ' + (i+1));
+      btn.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(btn);
+    });
+
+    function updateDots() {
+      dotsEl.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.style.width      = i === current ? '20px' : '6px';
+        d.style.background = i === current ? color : colorFade;
+        d.style.boxShadow  = i === current ? `0 0 8px ${color}` : 'none';
+      });
+      statusEl.textContent = (current+1) + ' / ' + slides.length + (paused ? ' · paused' : ' · auto');
+    }
+
+    function goTo(idx) {
+      slides[current].classList.remove('active');
+      current = (idx + slides.length) % slides.length;
+      slides[current].classList.add('active');
+
+      // Lazy load embed on demand
+      const embedWrap = slides[current].querySelector('.embed-wrap');
+      if (embedWrap) buildEmbed(embedWrap, embedWrap.dataset.url);
+
+      updateDots();
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => { if (!paused) goTo(current + 1); }, 4000);
+    }
+
+    wrap.addEventListener('mouseenter', () => { paused = true;  updateDots(); });
+    wrap.addEventListener('mouseleave', () => { paused = false; updateDots(); });
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    // Load first slide immediately
+    const firstEmbed = slides[0].querySelector('.embed-wrap');
+    if (firstEmbed) buildEmbed(firstEmbed, firstEmbed.dataset.url);
+
+    updateDots();
+    startTimer();
+  });
+</script>
+</body>
+</html>
